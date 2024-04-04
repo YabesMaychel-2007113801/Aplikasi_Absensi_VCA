@@ -16,9 +16,6 @@
             android:name=".splash"
             android:exported="false" />
         <activity
-            android:name=".editProfil"
-            android:exported="false" />
-        <activity
             android:name=".profil"
             android:exported="false" />
         <activity
