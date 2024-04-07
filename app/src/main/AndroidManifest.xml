@@ -13,9 +13,6 @@
             android:name=".editpassword"
             android:exported="false" />
         <activity
-            android:name=".splash"
-            android:exported="false" />
-        <activity
             android:name=".profil"
             android:exported="false" />
         <activity
@@ -34,13 +31,22 @@
             android:name=".login"
             android:exported="false" />
         <activity
+            android:name=".splash"
+            android:exported="true">
+                        <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
+
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 
