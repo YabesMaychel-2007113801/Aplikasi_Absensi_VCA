@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/background_bottom_right"
+            android:background="@color/burgandy_100"
             android:elevation="5dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:backgroundTint="@color/burgandy_100">
+            >
 
             <ImageView
                 android:layout_width="match_parent"
@@ -34,9 +34,10 @@
                 android:id="@+id/btn_jammasuk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/burgandy_100"
                 android:text="Absen Masuk"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <LinearLayout
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/background_bottom_left"
+            android:background="@color/purple_500"
             android:elevation="5dp"
             android:gravity="center"
             android:orientation="vertical"
@@ -59,9 +60,10 @@
                 android:id="@+id/btn_jampulang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/purple_500"
                 android:text="Absen Pulang"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 
