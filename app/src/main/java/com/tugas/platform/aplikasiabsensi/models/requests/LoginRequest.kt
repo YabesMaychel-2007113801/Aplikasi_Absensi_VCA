@@ -1,4 +1,4 @@
-package com.tugas.platform.aplikasiabsensi.models
+package com.tugas.platform.aplikasiabsensi.models.requests
 
 import com.google.gson.annotations.SerializedName
 

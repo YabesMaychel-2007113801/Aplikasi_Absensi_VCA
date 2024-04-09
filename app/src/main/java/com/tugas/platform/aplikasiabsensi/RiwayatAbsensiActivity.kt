@@ -3,9 +3,9 @@ package com.tugas.platform.aplikasiabsensi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class scanQR : AppCompatActivity() {
+class RiwayatAbsensiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan_qr)
+        setContentView(R.layout.activity_riwayat_absensi)
     }
 }

@@ -3,9 +3,9 @@ package com.tugas.platform.aplikasiabsensi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class login : AppCompatActivity() {
+class PasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_editpassword)
     }
 }

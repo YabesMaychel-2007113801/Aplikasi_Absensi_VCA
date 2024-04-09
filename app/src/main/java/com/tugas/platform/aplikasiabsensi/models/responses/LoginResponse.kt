@@ -1,6 +1,7 @@
-package com.tugas.platform.aplikasiabsensi.models
+package com.tugas.platform.aplikasiabsensi.models.responses
 
 import com.google.gson.annotations.SerializedName
+import com.tugas.platform.aplikasiabsensi.models.User
 
 data class LoginResponse (
     @SerializedName("status_code")

@@ -3,9 +3,9 @@ package com.tugas.platform.aplikasiabsensi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class profil : AppCompatActivity() {
+class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profil)
+        setContentView(R.layout.activity_camera)
     }
 }
