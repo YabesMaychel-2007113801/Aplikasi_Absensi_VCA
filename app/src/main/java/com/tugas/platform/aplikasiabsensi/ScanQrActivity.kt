@@ -2,10 +2,16 @@ package com.tugas.platform.aplikasiabsensi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tugas.platform.aplikasiabsensi.databinding.ActivityScanQrBinding
 
 class ScanQrActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityScanQrBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan_qr)
+        binding = ActivityScanQrBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
 }

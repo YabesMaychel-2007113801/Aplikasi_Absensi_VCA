@@ -3,27 +3,21 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import com.tugas.platform.aplikasiabsensi.databinding.ActivityEditpasswordBinding
 
-class PasswordActivity : AppCompatActivity(), View.OnClickListener {
+class PasswordActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityEditpasswordBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_editpassword)
+        binding = ActivityEditpasswordBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val btnSimpan:Button=findViewById(R.id.btnsimpanpass)
-        btnSimpan.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View?) {
-
-        if (v != null) {
-            when(v.id){
-                R.id.btnsimpanpass -> {
-                    val simpanIntent = Intent(this, login::class.java)
-                    startActivity(simpanIntent)
-                }
-            }
+        binding.btnsimpanpass.setOnClickListener {
+            val simpanIntent = Intent(this, LoginActivity::class.java)
+            startActivity(simpanIntent)
         }
     }
 }

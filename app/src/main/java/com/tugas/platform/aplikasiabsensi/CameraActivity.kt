@@ -3,28 +3,21 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import com.tugas.platform.aplikasiabsensi.databinding.ActivityCameraBinding
 
 class CameraActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCameraBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_camera)
+        binding = ActivityCameraBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val btnKamera: Button = findViewById(R.id.submitAbsen)
-        btnKamera.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View?) {
-
-        if (v != null) {
-            when(v.id){
-                R.id.submitAbsen -> {
-                    val camIntent = Intent(this, riwayatAbsensi::class.java)
-                    startActivity(camIntent)
-                }
-            }
+        binding.submitAbsen.setOnClickListener {
+            val camIntent = Intent(this, RiwayatAbsensiActivity::class.java)
+            startActivity(camIntent)
         }
-
     }
 }
