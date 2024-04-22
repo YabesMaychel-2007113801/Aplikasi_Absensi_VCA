@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         sessionManager = SessionManager(this)
 
-        val user: User = sessionManager.getUser()
-        val greet: String = "Halo, " + user.nama + "!"
+        val user: User? = sessionManager.getUser()
+        val greet: String = "Halo, " + user?.nama + "!"
 
         binding.greet.text = greet
 

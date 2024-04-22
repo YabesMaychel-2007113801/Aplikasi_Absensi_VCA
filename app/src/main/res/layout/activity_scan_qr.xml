@@ -14,25 +14,26 @@
                 android:gravity="center"
                 android:layout_marginTop="120dp"
                 android:text="Silahkan Scan QR Terlebih Dahulu"
-                android:textSize="25dp" />
+                android:textSize="25sp" />
 
-    <ImageView
-        android:id="@+id/scan_qr"
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scanner_view"
         android:layout_width="380dp"
-        android:layout_height="350dp"
+        android:layout_height="380dp"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-        android:background="@drawable/ic_launcher_background"/>
-
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="SCAN QR"
-        android:layout_below="@+id/scan_qr"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/burgandy_100"/>
+        app:autoFocusButtonColor="@android:color/white"
+        app:autoFocusButtonVisible="true"
+        app:flashButtonColor="@android:color/white"
+        app:flashButtonVisible="true"
+        app:frameColor="@android:color/white"
+        app:frameCornersSize="50dp"
+        app:frameCornersRadius="0dp"
+        app:frameAspectRatioWidth="1"
+        app:frameAspectRatioHeight="1"
+        app:frameSize="0.75"
+        app:frameThickness="2dp"
+        app:frameVerticalBias="0.5"
+        app:maskColor="#77000000"/>
 
 </RelativeLayout>

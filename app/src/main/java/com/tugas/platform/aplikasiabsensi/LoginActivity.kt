@@ -58,6 +58,17 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                 })
+
+            // for debugging on phone
+//            if (sessionManager.getUser() == null) {
+//                val dummy: User = User("0", "dummy", "dummy@mail.com", "dummy user", "dummy")
+//                sessionManager.saveAuthToken("dummy")
+//                sessionManager.saveUser(dummy)
+//
+//                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//            }
         }
     }
 }

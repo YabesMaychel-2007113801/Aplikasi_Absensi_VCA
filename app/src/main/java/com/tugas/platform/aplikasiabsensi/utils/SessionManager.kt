@@ -40,7 +40,7 @@ class SessionManager (context: Context) {
         return prefs.getString(USER_TOKEN, null)
     }
 
-    fun getUser(): User {
+    fun getUser(): User? {
         val userJson: String? = prefs.getString(USER, null)
 
         return gson.fromJson(userJson, User::class.java)
