@@ -26,6 +26,7 @@
                 android:layout_height="100dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginVertical="12dp"
+                android:layout_marginStart="12dp"
                 android:contentDescription="Foto Absensi"
                 android:src="@drawable/ic_baseline_person_24"/>
 
@@ -40,28 +41,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:layout_marginRight="8dp"
                     android:textColor="@color/white_100"
                     android:text="Jenis Absen" />
                 <TextView
                     android:id="@+id/tvTanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="3dp"
                     android:textColor="@color/white_100"
                     android:text="Hari, Tanggal" />
                 <TextView
                     android:id="@+id/tvJam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="3dp"
                     android:textColor="@color/white_100"
                     android:text="Jam" />
                 <TextView
                     android:id="@+id/tvLokasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="3dp"
                     android:textColor="@color/white_100"
                     android:textSize="12dp"
                     android:text="Lokasi" />
