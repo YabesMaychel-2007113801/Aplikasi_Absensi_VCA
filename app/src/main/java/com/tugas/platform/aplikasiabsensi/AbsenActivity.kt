@@ -3,6 +3,7 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityAbsenBinding
 
 class AbsenActivity : AppCompatActivity() {
@@ -26,5 +27,12 @@ class AbsenActivity : AppCompatActivity() {
             pulangIntent.putExtra("jenis", "Absen Pulang")
             startActivity(pulangIntent)
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                startActivity(Intent(this@AbsenActivity, MainActivity::class.java))
+                finish()
+            }
+        })
     }
 }

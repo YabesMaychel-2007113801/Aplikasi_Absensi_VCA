@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
@@ -173,6 +174,13 @@ class CameraActivity : AppCompatActivity() {
 
                 })
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                startActivity(Intent(this@CameraActivity, AbsenActivity::class.java))
+                finish()
+            }
+        })
     }
 
     override fun onRequestPermissionsResult(

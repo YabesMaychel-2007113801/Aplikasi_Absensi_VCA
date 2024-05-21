@@ -3,6 +3,7 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import com.tugas.platform.aplikasiabsensi.adapters.AbsensAdapter
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityRiwayatAbsensiBinding
@@ -40,5 +41,12 @@ class RiwayatAbsensiActivity : AppCompatActivity() {
             startActivity(mainIntent)
             finish()
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                startActivity(Intent(this@RiwayatAbsensiActivity, MainActivity::class.java))
+                finish()
+            }
+        })
     }
 }

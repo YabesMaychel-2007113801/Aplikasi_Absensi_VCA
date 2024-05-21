@@ -3,6 +3,7 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityProfilBinding
 
 class ProfilActivity : AppCompatActivity() {
@@ -19,5 +20,12 @@ class ProfilActivity : AppCompatActivity() {
             val editIntent = Intent(this, PasswordActivity::class.java)
             startActivity(editIntent)
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                startActivity(Intent(this@ProfilActivity, MainActivity::class.java))
+                finish()
+            }
+        })
     }
 }

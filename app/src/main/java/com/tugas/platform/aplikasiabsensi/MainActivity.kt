@@ -7,6 +7,7 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
@@ -89,6 +90,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(riwayatIntent)
             finish()
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        })
     }
 
     // Ask Location Permission
