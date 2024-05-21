@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +53,13 @@ class CameraActivity : AppCompatActivity() {
     private var jenisAbsen: String? = null
     private lateinit var f: File
 
+    private lateinit var geocoder: Geocoder
+    private var latitude: Double? = null
+    private var longitude: Double? = null
+
+    private lateinit var addresses: List<Address>
+    private var lokasi: String = null.toString()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +76,11 @@ class CameraActivity : AppCompatActivity() {
         val userID = user?.id
         jenisAbsen = intent.getStringExtra("jenis")
 
+        geocoder = Geocoder(this, Locale("id", "ID"))
+        latitude = intent.getDoubleExtra("latitude", 0.5086603359302369)
+        longitude = intent.getDoubleExtra("longitude", 101.44668177634597)
+        addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1)!!
+        lokasi = addresses.get(0).getAddressLine(0)
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
@@ -112,6 +126,7 @@ class CameraActivity : AppCompatActivity() {
                 //  binding.imagePreview.setImageBitmap(pic)
                 binding.imagePreview.setImageURI(Uri.fromFile(f))
                 binding.tvDateTime.text = tanggal
+                binding.tvLocation.text = lokasi
             }
         }
 
@@ -129,10 +144,12 @@ class CameraActivity : AppCompatActivity() {
             val inputUserID = createPartFromString(userID.toString())
             val inputJenis = createPartFromString(jenisAbsen.toString())
             val inputJam = createPartFromString(waktu)
+            val inputLokasi = createPartFromString(lokasi)
 
             map.put("user_id", inputUserID)
             map.put("jenis", inputJenis)
             map.put("jam", inputJam)
+            map.put("lokasi", inputLokasi)
 
             val multipartImage: MultipartBody.Part?
             val requestFile: RequestBody = f

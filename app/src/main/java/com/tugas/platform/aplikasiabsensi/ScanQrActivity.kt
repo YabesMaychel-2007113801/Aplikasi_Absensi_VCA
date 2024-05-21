@@ -39,10 +39,10 @@ class ScanQrActivity : AppCompatActivity() {
     private var isInArea: Boolean = false
 
     companion object {
-//        private const val GEOFENCE_LAT = 0.45936702513236166 // Rumah
-//        private const val GEOFENCE_LONG = 101.37504168151234 // Rumah
-        private const val GEOFENCE_LAT = 0.5086603359302369
-        private const val GEOFENCE_LONG = 101.44668177634597
+        private const val GEOFENCE_LAT = 0.45936702513236166 // Rumah
+        private const val GEOFENCE_LONG = 101.37504168151234 // Rumah
+//        private const val GEOFENCE_LAT = 0.5086603359302369
+//        private const val GEOFENCE_LONG = 101.44668177634597
         private const val GEOFENCE_RADIUS = 25.00
     }
 
@@ -120,6 +120,8 @@ class ScanQrActivity : AppCompatActivity() {
                     if (BCryptKt.verify(qrPassword, qr.text) && isInArea) {
                         val intent = Intent(this@ScanQrActivity, CameraActivity::class.java)
                         intent.putExtra("jenis", jenisAbsen)
+                        intent.putExtra("latitude", currentLocation.latitude)
+                        intent.putExtra("longitude", currentLocation.longitude)
                         startActivity(intent)
                         finish()
                     }

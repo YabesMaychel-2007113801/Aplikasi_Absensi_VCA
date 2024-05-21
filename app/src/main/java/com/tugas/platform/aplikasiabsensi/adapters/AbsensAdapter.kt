@@ -27,6 +27,7 @@ class AbsensAdapter(val data: List<Absen>?, private val context: Context) : Recy
             binding.tvJenis.text = data?.get(position)?.jenis
             binding.tvTanggal.text = data?.get(position)?.jam?.let { it -> sourceFormat.parse(it)?.let { tanggalFormat.format(it) } }
             binding.tvJam.text = data?.get(position)?.jam?.let { it -> sourceFormat.parse(it)?.let { jamFormat.format(it) } }
+            binding.tvLokasi.text = data?.get(position)?.lokasi
             Glide.with(context).load(Constants.ABSEN_IMG_URL+data?.get(position)?.foto).into(binding.ivAbsen)
         }
     }

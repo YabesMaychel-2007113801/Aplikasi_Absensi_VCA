@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         apiClient.getApiService(this).lastAbsen()
             .enqueue(object : Callback<Absen> {
                 override fun onResponse(call: Call<Absen>, response: Response<Absen>) {
-                    if (response.body() != null) {
+                    if (response.body() != null && response.body()!!.jam != null) {
                         val tanggalFormat = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale("id","ID"))
                         val jamFormat = SimpleDateFormat("HH:mm:ss", Locale("id", "ID"))
                         val sourceFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale("id", "ID"))
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                             ?.let { tanggalFormat.format(it) }
                         binding.tvWaktu.text = sourceFormat.parse(response.body()!!.jam)
                             ?.let { jamFormat.format(it) }
+                        binding.tvLokasi.text = response.body()!!.lokasi
 
                         Glide.with(this@MainActivity).load(Constants.ABSEN_IMG_URL+response.body()!!.foto).into(binding.ivAbsen)
                     }

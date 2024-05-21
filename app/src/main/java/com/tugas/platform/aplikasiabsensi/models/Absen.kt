@@ -15,6 +15,9 @@ data class Absen(
     @SerializedName("foto")
     var foto: String,
 
+    @SerializedName("lokasi")
+    var lokasi: String,
+
     @SerializedName("jam")
     var jam: String,
 )
