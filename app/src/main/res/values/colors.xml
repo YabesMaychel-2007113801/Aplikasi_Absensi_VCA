@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="burgandy">#4F091D</color>
     <color name="burgandy_100">#8A2D48</color>
+    <color name="burgandy_thin">#7Df9929f</color>
     <color name="white_100">#F1F1F1</color>
 </resources>

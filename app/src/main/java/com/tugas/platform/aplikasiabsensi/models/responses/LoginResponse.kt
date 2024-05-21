@@ -11,5 +11,8 @@ data class LoginResponse (
     var authToken: String,
 
     @SerializedName("user")
-    var user: User
+    var user: User,
+
+    @SerializedName("error")
+    var error: String,
 )

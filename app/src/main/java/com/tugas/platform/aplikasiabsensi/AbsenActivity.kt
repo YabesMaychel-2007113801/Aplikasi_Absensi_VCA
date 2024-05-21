@@ -15,13 +15,15 @@ class AbsenActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.btnJammasuk.setOnClickListener {
+        binding.linlayAbsenmasuk.setOnClickListener {
             val masukIntent = Intent(this, ScanQrActivity::class.java)
+            masukIntent.putExtra("jenis", "Absen Masuk")
             startActivity(masukIntent)
         }
 
-        binding.btnJampulang.setOnClickListener {
+        binding.linlayAbsenpulang.setOnClickListener {
             val pulangIntent = Intent(this, ScanQrActivity::class.java)
+            pulangIntent.putExtra("jenis", "Absen Pulang")
             startActivity(pulangIntent)
         }
     }
