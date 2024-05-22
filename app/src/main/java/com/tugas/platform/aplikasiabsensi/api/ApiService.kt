@@ -40,4 +40,11 @@ interface ApiService {
 
     @GET("user/absen/all")
     fun allAbsen(): Call<List<Absen>>
+
+    @GET("user/photo")
+    fun getPhoto(): Call<String>
+
+    @Multipart
+    @POST("user/change_photo")
+    fun changePhoto(@Part file: MultipartBody.Part): Call<MessageResponse>
 }

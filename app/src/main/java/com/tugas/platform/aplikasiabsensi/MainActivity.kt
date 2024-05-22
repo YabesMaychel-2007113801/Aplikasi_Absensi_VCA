@@ -7,9 +7,11 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.signature.ObjectKey
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityMainBinding
 import com.tugas.platform.aplikasiabsensi.models.Absen
@@ -55,6 +57,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.greet.text = greet
 
+        apiClient.getApiService(this).getPhoto()
+            .enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    val foto = response.body().toString()
+//                    Toast.makeText(this@MainActivity, foto, Toast.LENGTH_SHORT).show()
+                    Glide.with(this@MainActivity).load(Constants.PROFILE_IMG_URL+foto).signature(
+                        ObjectKey(System.currentTimeMillis())
+                    ).into(binding.profileImage)
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
         apiClient.getApiService(this).lastAbsen()
             .enqueue(object : Callback<Absen> {
                 override fun onResponse(call: Call<Absen>, response: Response<Absen>) {
@@ -74,7 +92,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<Absen>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@MainActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                    finish()
                 }
 
             })
@@ -88,6 +107,12 @@ class MainActivity : AppCompatActivity() {
         binding.riwayatHome.setOnClickListener {
             val riwayatIntent = Intent(this, RiwayatAbsensiActivity::class.java)
             startActivity(riwayatIntent)
+            finish()
+        }
+
+        binding.profileImage.setOnClickListener {
+            val profilIntent = Intent(this, ProfilActivity::class.java)
+            startActivity(profilIntent)
             finish()
         }
 

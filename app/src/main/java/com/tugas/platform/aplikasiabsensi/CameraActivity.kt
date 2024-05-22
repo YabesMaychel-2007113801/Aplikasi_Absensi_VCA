@@ -16,9 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityCameraBinding
-import com.tugas.platform.aplikasiabsensi.models.User
 import com.tugas.platform.aplikasiabsensi.models.responses.AbsenResponse
-import com.tugas.platform.aplikasiabsensi.utils.SessionManager
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -40,7 +38,6 @@ import java.util.Locale
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCameraBinding
-    private lateinit var sessionManager: SessionManager
 
     private lateinit var apiClient: ApiClient
 
@@ -69,12 +66,9 @@ class CameraActivity : AppCompatActivity() {
         setContentView(view)
 
         apiClient = ApiClient()
-        sessionManager = SessionManager(this)
 
         f = File(this.cacheDir, "absen.png")
 
-        val user: User? = sessionManager.getUser()
-        val userID = user?.id
         jenisAbsen = intent.getStringExtra("jenis")
 
         geocoder = Geocoder(this, Locale("id", "ID"))
@@ -142,12 +136,10 @@ class CameraActivity : AppCompatActivity() {
         binding.submitAbsen.setOnClickListener {
             val map: MutableMap<String, RequestBody> = mutableMapOf()
 
-            val inputUserID = createPartFromString(userID.toString())
             val inputJenis = createPartFromString(jenisAbsen.toString())
             val inputJam = createPartFromString(waktu)
             val inputLokasi = createPartFromString(lokasi)
 
-            map.put("user_id", inputUserID)
             map.put("jenis", inputJenis)
             map.put("jam", inputJam)
             map.put("lokasi", inputLokasi)

@@ -55,6 +55,8 @@ dependencies {
     implementation 'com.github.yuriy-budiyev:code-scanner:2.3.0'
     implementation 'net.lsafer:bcrypt-kt:1.0.1'
     implementation 'at.favre.lib:bcrypt:0.10.2'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     // Network
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
