@@ -3,6 +3,7 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityEditpasswordBinding
@@ -64,7 +65,8 @@ class PasswordActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        Toast.makeText(this@PasswordActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                        finish()
                     }
 
                 })

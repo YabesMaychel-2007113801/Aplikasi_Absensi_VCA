@@ -106,9 +106,12 @@
 
     <TextView
         android:id="@+id/tv_main"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tengahmain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
         android:text="status"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -155,8 +158,6 @@
                         android:text="Jenis Absensi"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="1dp"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -165,8 +166,6 @@
                         android:layout_height="wrap_content"
                         android:text="Tanggal"
                         android:textSize="18dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="1dp"
                         android:textColor="@color/white"/>
 
                     <TextView
@@ -175,8 +174,6 @@
                         android:layout_height="wrap_content"
                         android:text="Waktu"
                         android:textSize="18dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="1dp"
                         android:textColor="@color/white"/>
 
                     <TextView
@@ -185,8 +182,6 @@
                         android:layout_height="wrap_content"
                         android:text="Lokasi"
                         android:textSize="14dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="1dp"
                         android:textColor="@color/white"/>
 
                 </LinearLayout>

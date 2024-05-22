@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -161,7 +162,8 @@ class CameraActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<AbsenResponse>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        Toast.makeText(this@CameraActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                        finish()
                     }
 
                 })

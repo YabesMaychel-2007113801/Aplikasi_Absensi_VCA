@@ -57,7 +57,7 @@ class ProfilActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@ProfilActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
                 }
 
             })

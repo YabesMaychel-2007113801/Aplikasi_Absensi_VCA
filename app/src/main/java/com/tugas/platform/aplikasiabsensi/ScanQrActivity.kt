@@ -39,8 +39,6 @@ class ScanQrActivity : AppCompatActivity() {
     private var isInArea: Boolean = false
 
     companion object {
-//        private const val GEOFENCE_LAT = 0.45936702513236166 // Rumah
-//        private const val GEOFENCE_LONG = 101.37504168151234 // Rumah
         private const val GEOFENCE_LAT = 0.5086603359302369
         private const val GEOFENCE_LONG = 101.44668177634597
         private const val GEOFENCE_RADIUS = 25.00
@@ -79,11 +77,12 @@ class ScanQrActivity : AppCompatActivity() {
             .enqueue(object: Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     qrPassword = response.body().toString()
-
+//                    Toast.makeText(this@ScanQrActivity, qrPassword, Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@ScanQrActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                    finish()
                 }
             })
 
@@ -117,6 +116,20 @@ class ScanQrActivity : AppCompatActivity() {
                         isInArea = checkForGeoFenceEntry(currentLocation, GEOFENCE_LAT, GEOFENCE_LONG, GEOFENCE_RADIUS)
                     }
 
+                    if (!BCryptKt.verify(qrPassword, qr.text)) {
+                        builder
+                            .setMessage("Absensi tidak dapat dilakukan!")
+                            .setTitle("QR Code yang discan tidak sesuai!")
+                            .setPositiveButton("OK") { dialog, which ->
+                                dialog.dismiss()
+                                val intent = Intent(this@ScanQrActivity, MainActivity::class.java)
+                                startActivity(intent)
+                            }
+
+                        val dialog: AlertDialog = builder.create()
+                        dialog.show()
+                    }
+
                     if (BCryptKt.verify(qrPassword, qr.text) && isInArea) {
                         val intent = Intent(this@ScanQrActivity, CameraActivity::class.java)
                         intent.putExtra("jenis", jenisAbsen)
@@ -129,7 +142,7 @@ class ScanQrActivity : AppCompatActivity() {
                     if (!isInArea) {
                         builder
                             .setMessage("Absensi tidak dapat dilakukan!")
-                            .setTitle("Anda tidak berada di Area Sekolah! ("+currentLocation.latitude+", "+currentLocation.longitude+")")
+                            .setTitle("Anda tidak berada di Area Sekolah!")
                             .setPositiveButton("OK") { dialog, which ->
                                 dialog.dismiss()
                                 val intent = Intent(this@ScanQrActivity, MainActivity::class.java)

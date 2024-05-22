@@ -3,6 +3,7 @@ package com.tugas.platform.aplikasiabsensi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import com.tugas.platform.aplikasiabsensi.adapters.AbsensAdapter
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
@@ -32,7 +33,8 @@ class RiwayatAbsensiActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<Absen>>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@RiwayatAbsensiActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                    finish()
                 }
             })
 
