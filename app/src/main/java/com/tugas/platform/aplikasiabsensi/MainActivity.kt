@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
             })
 
         binding.absenHome.setOnClickListener {
-            val mainIntent = Intent(this, AbsenActivity::class.java)
+            val mainIntent = Intent(this, ScanQrActivity::class.java)
             startActivity(mainIntent)
             finish()
         }

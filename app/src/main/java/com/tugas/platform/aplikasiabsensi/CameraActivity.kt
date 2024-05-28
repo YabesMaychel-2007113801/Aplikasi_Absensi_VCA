@@ -49,7 +49,6 @@ class CameraActivity : AppCompatActivity() {
 
 
     private var waktu = waktuFormat.format(Calendar.getInstance().time)
-    private var jenisAbsen: String? = null
     private lateinit var f: File
 
     private lateinit var geocoder: Geocoder
@@ -69,8 +68,6 @@ class CameraActivity : AppCompatActivity() {
         apiClient = ApiClient()
 
         f = File(this.cacheDir, "absen.png")
-
-        jenisAbsen = intent.getStringExtra("jenis")
 
         geocoder = Geocoder(this, Locale("id", "ID"))
         latitude = intent.getDoubleExtra("latitude", 0.5086603359302369)
@@ -137,11 +134,9 @@ class CameraActivity : AppCompatActivity() {
         binding.submitAbsen.setOnClickListener {
             val map: MutableMap<String, RequestBody> = mutableMapOf()
 
-            val inputJenis = createPartFromString(jenisAbsen.toString())
             val inputJam = createPartFromString(waktu)
             val inputLokasi = createPartFromString(lokasi)
 
-            map.put("jenis", inputJenis)
             map.put("jam", inputJam)
             map.put("lokasi", inputLokasi)
 

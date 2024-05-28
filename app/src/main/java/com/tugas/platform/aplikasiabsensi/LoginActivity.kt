@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(p0: Call<LoginResponse>, p1: Throwable) {
-                        Toast.makeText(this@LoginActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@LoginActivity, p1.toString(), Toast.LENGTH_LONG).show()
                     }
 
                 })

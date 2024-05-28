@@ -54,8 +54,6 @@ class ScanQrActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val jenisAbsen = intent.getStringExtra("jenis")
-
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
 
         if (ActivityCompat.checkSelfPermission(
@@ -133,7 +131,6 @@ class ScanQrActivity : AppCompatActivity() {
 
                     if (BCryptKt.verify(qrPassword, qr.text) && isInArea) {
                         val intent = Intent(this@ScanQrActivity, CameraActivity::class.java)
-                        intent.putExtra("jenis", jenisAbsen)
                         intent.putExtra("latitude", currentLocation.latitude)
                         intent.putExtra("longitude", currentLocation.longitude)
                         startActivity(intent)
