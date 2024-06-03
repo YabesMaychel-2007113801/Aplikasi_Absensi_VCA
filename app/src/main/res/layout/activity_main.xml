@@ -11,7 +11,7 @@
         android:id="@+id/atasmain"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_marginBottom="30dp"
+
         android:gravity="center"
         android:orientation="vertical">
 
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello, ..."
-            android:textColor="@color/burgandy"
+            android:textColor="@color/burgandy_100"
             android:textSize="25dp"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -42,65 +42,124 @@
         android:layout_height="wrap_content"
         android:baselineAligned="false"
         android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_bottom_right"
-            android:elevation="5dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:backgroundTint="@color/burgandy_100">
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_baseline_access_time_24"
-               />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/absen_home"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAbsen"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/white_100"
-                android:text="Absen"
-                android:textAllCaps="false"
-                android:textColor="@color/burgandy_100"
-                android:textSize="20dp"
+                android:layout_height="120dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_bottom_left"
-            android:elevation="5dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:backgroundTint="@color/burgandy_100">
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_baseline_history_24_2"
-                />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="1dp"
+                    android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/riwayat_home"
-                android:backgroundTint="@color/white_100"
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:text="Lakukan Absensi"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_circle_radius"
+                        android:padding="10dp"
+                        android:src="@drawable/baseline_arrow_24"
+                        app:tint="@color/black" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-30dp"
+                    android:layout_marginBottom="-30dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_masuk" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_overlay"
+                    android:backgroundTint="@color/burgandy_100" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRiwayatAbsen"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="Riwayat"
-                android:textAllCaps="false"
-                android:textSize="20dp"
-                android:textColor="@color/burgandy_100"
-                />
-        </LinearLayout>
+                android:layout_height="120dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="1dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:text="Riwayat Absen"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_circle_radius"
+                        android:padding="10dp"
+                        android:src="@drawable/baseline_arrow_24"
+                        app:tint="@color/black" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="-15dp"
+                    android:layout_marginBottom="-50dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_keluar" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_overlay"
+                    android:backgroundTint="@color/burgandy_100" />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </LinearLayout>
 
@@ -110,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tengahmain"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="12dp"
         android:text="status"
         android:textAllCaps="true"
@@ -126,15 +185,14 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cw_atas"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
             app:cardCornerRadius="20dp"
             android:backgroundTint="@color/burgandy_100">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_margin="5dp">

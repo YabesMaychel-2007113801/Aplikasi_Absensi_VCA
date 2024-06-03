@@ -40,9 +40,9 @@ class ScanQrActivity : AppCompatActivity() {
     private var isInArea: Boolean = false
 
     companion object {
-        private const val GEOFENCE_LAT = 0.5086603359302369
-        private const val GEOFENCE_LONG = 101.44668177634597
-        private const val GEOFENCE_RADIUS = 25.00
+        private const val GEOFENCE_LAT = 0.4801630188556687
+        private const val GEOFENCE_LONG = 101.3769235277614
+        private const val GEOFENCE_RADIUS = 100.00
     }
 
     private lateinit var currentLocation: Location

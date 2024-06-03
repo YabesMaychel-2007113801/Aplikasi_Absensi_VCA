@@ -99,13 +99,13 @@ class MainActivity : AppCompatActivity() {
 
             })
 
-        binding.absenHome.setOnClickListener {
+        binding.cvAbsen.setOnClickListener {
             val mainIntent = Intent(this, ScanQrActivity::class.java)
             startActivity(mainIntent)
             finish()
         }
 
-        binding.riwayatHome.setOnClickListener {
+        binding.cvRiwayatAbsen.setOnClickListener {
             val riwayatIntent = Intent(this, RiwayatAbsensiActivity::class.java)
             startActivity(riwayatIntent)
             finish()
