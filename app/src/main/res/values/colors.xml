@@ -11,4 +11,9 @@
     <color name="burgandy_100">#8A2D48</color>
     <color name="burgandy_thin">#7Df9929f</color>
     <color name="white_100">#F1F1F1</color>
+    <color name="red">#ED1E5A</color>
+    <color name="green">#63D75B</color>
+    <color name="grey">#C5C5C5</color>
+
+
 </resources>
