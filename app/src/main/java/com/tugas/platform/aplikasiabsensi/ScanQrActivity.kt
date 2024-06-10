@@ -35,14 +35,14 @@ class ScanQrActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
 
     private lateinit var apiClient: ApiClient
-    private lateinit var qrPassword: String
+    private var qrPassword: String = ""
 
     private var isInArea: Boolean = false
 
     companion object {
-        private const val GEOFENCE_LAT = 0.4801630188556687
-        private const val GEOFENCE_LONG = 101.3769235277614
-        private const val GEOFENCE_RADIUS = 100.00
+        private const val GEOFENCE_LAT = 0.48001824836810336
+        private const val GEOFENCE_LONG = 101.37683528895366
+        private const val GEOFENCE_RADIUS = 150.00
     }
 
     private lateinit var currentLocation: Location
@@ -145,6 +145,7 @@ class ScanQrActivity : AppCompatActivity() {
                                 dialog.dismiss()
                                 val intent = Intent(this@ScanQrActivity, MainActivity::class.java)
                                 startActivity(intent)
+                                finish()
                             }
 
                         val dialog: AlertDialog = builder.create()
@@ -155,8 +156,8 @@ class ScanQrActivity : AppCompatActivity() {
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             runOnUiThread {
-                Toast.makeText(this, "Camera initialization error: ${it.message}",
-                    Toast.LENGTH_LONG).show()
+//                Toast.makeText(this, "Camera initialization error: ${it.message}",
+//                    Toast.LENGTH_LONG).show()
             }
         }
 

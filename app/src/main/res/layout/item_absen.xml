@@ -80,7 +80,7 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/clock_icon"
+                android:src="@drawable/baseline_access_time_24"
                 android:id="@+id/icStatus"/>
 
             </LinearLayout>
