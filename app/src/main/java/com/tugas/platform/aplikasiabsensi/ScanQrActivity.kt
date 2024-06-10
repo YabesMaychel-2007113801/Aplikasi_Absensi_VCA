@@ -167,7 +167,7 @@ class ScanQrActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                startActivity(Intent(this@ScanQrActivity, AbsenActivity::class.java))
+                startActivity(Intent(this@ScanQrActivity, MainActivity::class.java))
                 finish()
             }
         })

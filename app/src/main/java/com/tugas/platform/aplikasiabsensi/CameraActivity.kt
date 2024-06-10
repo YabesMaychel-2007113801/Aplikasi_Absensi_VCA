@@ -14,6 +14,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.tugas.platform.aplikasiabsensi.api.ApiClient
 import com.tugas.platform.aplikasiabsensi.databinding.ActivityCameraBinding
@@ -24,6 +25,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,6 +68,8 @@ class CameraActivity : AppCompatActivity() {
         setContentView(view)
 
         apiClient = ApiClient()
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
 
         f = File(this.cacheDir, "absen.png")
 
@@ -132,36 +136,66 @@ class CameraActivity : AppCompatActivity() {
         }
 
         binding.submitAbsen.setOnClickListener {
-            val map: MutableMap<String, RequestBody> = mutableMapOf()
-
-            val inputJam = createPartFromString(waktu)
-            val inputLokasi = createPartFromString(lokasi)
-
-            map.put("jam", inputJam)
-            map.put("lokasi", inputLokasi)
-
-            val multipartImage: MultipartBody.Part?
-            val requestFile: RequestBody = f
-                .asRequestBody("image/png".toMediaType())
-
-            multipartImage = MultipartBody.Part.createFormData("foto", f.name, requestFile)
-
-            apiClient.getApiService(this).submitAbsen(map, multipartImage)
-                .enqueue(object: Callback<AbsenResponse> {
-                    override fun onResponse(
-                        call: Call<AbsenResponse>,
-                        response: Response<AbsenResponse>
-                    ) {
-                        val camIntent = Intent(this@CameraActivity, RiwayatAbsensiActivity::class.java)
-                        startActivity(camIntent)
+            if (binding.tvDateTime.text != tanggal) {
+                builder
+                    .setMessage("Data yang dimasukkan tidak valid! Silahkan coba lagi!")
+                    .setTitle("Absensi tidak dapat dilakukan!")
+                    .setPositiveButton("OK") { dialog, which ->
+                        dialog.dismiss()
                     }
 
-                    override fun onFailure(call: Call<AbsenResponse>, t: Throwable) {
-                        Toast.makeText(this@CameraActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
-                        finish()
-                    }
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+            } else {
+                val map: MutableMap<String, RequestBody> = mutableMapOf()
 
-                })
+                val inputJam = createPartFromString(waktu)
+                val inputLokasi = createPartFromString(lokasi)
+
+                map.put("jam", inputJam)
+                map.put("lokasi", inputLokasi)
+
+                val multipartImage: MultipartBody.Part?
+                val requestFile: RequestBody = f
+                    .asRequestBody("image/png".toMediaType())
+
+                multipartImage = MultipartBody.Part.createFormData("foto", f.name, requestFile)
+
+                apiClient.getApiService(this).submitAbsen(map, multipartImage)
+                    .enqueue(object: Callback<AbsenResponse> {
+                        override fun onResponse(
+                            call: Call<AbsenResponse>,
+                            response: Response<AbsenResponse>
+                        ) {
+                            if (response.errorBody() != null) {
+                                if (JSONObject(response.errorBody()!!.string()).getString("error") == "dua kali") {
+                                    builder
+                                        .setMessage("Anda sudah melakukan absen dua kali hari ini!")
+                                        .setTitle("Absensi tidak dapat dilakukan!")
+                                        .setPositiveButton("OK") { dialog, which ->
+                                            dialog.dismiss()
+                                            val intent = Intent(this@CameraActivity, RiwayatAbsensiActivity::class.java)
+                                            startActivity(intent)
+                                            finish()
+                                        }
+
+                                    val dialog: AlertDialog = builder.create()
+                                    dialog.show()
+                                }
+                            } else {
+                                val camIntent = Intent(this@CameraActivity, RiwayatAbsensiActivity::class.java)
+                                startActivity(camIntent)
+                                finish()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<AbsenResponse>, t: Throwable) {
+                            Toast.makeText(this@CameraActivity, "Tidak dapat terhubung ke server!", Toast.LENGTH_LONG).show()
+                            finish()
+                        }
+
+                    })
+            }
         }
 
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
